@@ -25,5 +25,10 @@ export const store = createStore({
   }
   },
   modules: {
+  },
+  getters: {
+    contacts(state: State): Contact[] {
+      return state.contacts
+    }
   }
 })

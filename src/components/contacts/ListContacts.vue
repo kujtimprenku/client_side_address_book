@@ -18,8 +18,7 @@ export default defineComponent({
   components: { ItemContact },
   computed: {
     contacts (): Contact[] {
-      // return  this.$store.state.contacts;
-      return []
+      return  this.$store.getters.contacts;
     }
   }
 })
