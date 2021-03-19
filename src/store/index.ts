@@ -1,6 +1,7 @@
+import { Contact } from '@/models/contact'
 import { createStore } from 'vuex'
 
-export default createStore({
+export const store = createStore({
   state: {
   },
   mutations: {
