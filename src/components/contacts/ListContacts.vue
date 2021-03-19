@@ -5,8 +5,7 @@
         <h3>No contacts found, please add a new contact.</h3>
       </div>
     </base-card>
-    <item-contact
-    v-for="contact in contacts" :key="contact.id" :contact="contact"></item-contact>
+    <item-contact v-for="contact in contacts" :key="contact.id" :contact="contact"></item-contact>
   </ul>
 </template>
 
