@@ -13,9 +13,9 @@ export default defineComponent({
   name: 'Contacts',
 
   mounted () {
-    // if (this.$store.getters.contacts.length === 0) {
-    //   this.$store.dispatch('setContacts')
-    // }
+    if (this.$store.getters.contacts.length === 0) {
+      this.$store.dispatch('setContacts')
+    }
   }
 });
 </script>
