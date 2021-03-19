@@ -2,7 +2,7 @@
   <header>
       <h1 @click="$router.push('/contacts')">{{ title }}</h1>
       <nav id="nav">
-        <button mode="round gray"><router-link to="/contacts/create">Add Contact</router-link></button>
+        <base-button mode="round gray"><router-link to="/contacts/create">Add Contact</router-link></base-button>
       </nav>
   </header>
 </template>
