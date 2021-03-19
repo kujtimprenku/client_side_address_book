@@ -4,22 +4,34 @@
     <form ref="form" @submit.prevent="onSave">
       <div class="form-control">
         <label for="firstname">First Name</label>
-        <input id="firstname" type="text" name="firstname" v-model="editedContact.firstname">
+        <input id="firstname" type="text" name="firstname" v-model="editedContact.firstname" @blur="v$.editedContact.firstname.$touch()">
+        <span v-if="v$.editedContact.firstname.$dirty && v$.editedContact.firstname.$invalid" class="error">
+          {{ v$.editedContact.firstname.$errors[0].$message }}
+        </span>
       </div>
       <div class="form-control">
         <label for="lastname">Last Name</label>
-        <input id="lastname" type="text" name="lastname" v-model="editedContact.lastname">
+        <input id="lastname" type="text" name="lastname" v-model="editedContact.lastname" @blur="v$.editedContact.lastname.$touch()">
+        <span v-if="v$.editedContact.lastname.$dirty && v$.editedContact.lastname.$invalid" class="error">
+          {{ v$.editedContact.lastname.$errors[0].$message }}
+        </span>
       </div>
       <div class="form-control">
         <label for="email">Email</label>
-        <input id="email" type="text" name="email" v-model="editedContact.email">
+        <input id="email" type="text" name="email" v-model="editedContact.email" @blur="v$.editedContact.email.$touch()">
+        <span v-if="v$.editedContact.email.$dirty && v$.editedContact.email.$invalid" class="error">
+          {{ v$.editedContact.email.$errors[0].$message }}
+        </span>
       </div>
       <div class="form-control">
         <label for="country">Country</label>
-        <select v-model="editedContact.country" id="country" name="country">
+        <select v-model="editedContact.country" id="country" name="country" @blur="v$.editedContact.country.$touch()">
           <option disabled value="">Please select one</option>
           <option v-for="country in countries" :key="country">{{ country }}</option>
         </select>
+        <span v-if="v$.editedContact.country.$dirty && v$.editedContact.country.$invalid" class="error">
+          {{ v$.editedContact.country.$errors[0].$message }}
+        </span>
       </div>
       <div>
         <base-button type="submit">{{ modeText }}</base-button>
@@ -32,6 +44,8 @@
 import { defineComponent } from 'vue'
 import { Contact } from '@/models/contact'
 import countryList from 'country-list'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
 
 
 interface State {
@@ -60,6 +74,17 @@ export default defineComponent({
       countries: countryList.getNames(),
     }
   },
+  validations () {
+    return {
+      editedContact: {
+        firstname: { required },
+        lastname: { required },
+        email: { required, email },
+        country: { required },
+      }
+    }
+  },
+  setup: () => ({ v$: useVuelidate() }),
   computed: {
     editMode (): boolean {
       return this.$route.params.id ? true: false
@@ -70,8 +95,12 @@ export default defineComponent({
   },
   methods: {
     onSave (): void {
-      this.$emit('submit', this.editedContact)
-      }
+      this.v$.$touch()
+      if (!this.v$.$invalid) {
+        this.$emit('submit', this.editedContact)
+        this.v$.$reset()
+        }
+      },
     }
   }
 );
