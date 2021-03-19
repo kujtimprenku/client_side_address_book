@@ -14,6 +14,11 @@ export const store = createStore({
     CREATE_CONTACT (state, contact: Contact) {
       state.contacts.push(contact)
     },
+    UPDATE_CONTACT (state, contact: Contact) {
+      const index = state.contacts.findIndex(c => c.id === contact.id)
+      state.contacts[index] = contact
+      state.contacts = state.contacts.filter(c => c.id !== 0)
+    },
   },
   actions: {
     setContacts ({ commit }) {
@@ -29,12 +34,18 @@ export const store = createStore({
     createContact ({ commit }, contact: Contact) {
       commit('CREATE_CONTACT', contact)
     },
+    updateContact ({ commit }, contact: Contact) {
+      commit('UPDATE_CONTACT', contact)
+    },
   },
   modules: {
   },
   getters: {
     contacts(state: State): Contact[] {
       return state.contacts
+    },
+    getContactById: (state: State) => (id: number) => {
+      return state.contacts.find(contact => contact.id === id)
     }
   }
 })
