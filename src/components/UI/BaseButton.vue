@@ -53,4 +53,10 @@ button {
 .round:active {
   background-color: #efeaea;
 }
+
+@media only screen and (max-width: 700px) {
+  button {
+    padding: 0.50rem 1rem;
+  }
+}
 </style>

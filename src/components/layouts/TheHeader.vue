@@ -45,4 +45,21 @@ a:active, a:visited {
   color: black;
 }
 
+@media only screen and (max-width: 700px) {
+  header {
+    max-width: 80%;
+    flex-direction: column;
+    height: 7rem;
+  }
+  header h1 {
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    max-width: 22rem;
+    min-width: 22rem;
+  }
+}
 </style>
