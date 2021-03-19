@@ -13,9 +13,8 @@ export default defineComponent({
   },
   methods: {
     onSubmit(contact: Contact) {
-      console.log(contact)
-      // this.$store.dispatch('createContact', contact)
-      // this.$router.push('/contacts')
+      this.$store.dispatch('createContact', contact)
+      this.$router.push('/contacts')
     }
   }
 })

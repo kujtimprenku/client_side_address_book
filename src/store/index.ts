@@ -11,6 +11,9 @@ export const store = createStore({
     SET_CONTACTS (state, contacts: Contact[]) {
       state.contacts = contacts
     },
+    CREATE_CONTACT (state, contact: Contact) {
+      state.contacts.push(contact)
+    },
   },
   actions: {
     setContacts ({ commit }) {
@@ -21,8 +24,11 @@ export const store = createStore({
         email: 'prenkukujtim.kp@gmail.com',
         country: 'Albania'
       }]
-    commit('SET_CONTACTS', tempContacts)
-  }
+      commit('SET_CONTACTS', tempContacts)
+    },
+    createContact ({ commit }, contact: Contact) {
+      commit('CREATE_CONTACT', contact)
+    },
   },
   modules: {
   },
