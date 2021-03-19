@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <list-contacts></list-contacts>
   </div>
 </template>
 
 <script lang="ts">
+import ListContacts from '@/components/contacts/ListContacts.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
+  components: { ListContacts },
   name: 'Home',
 
 });
