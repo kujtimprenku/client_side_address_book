@@ -49,7 +49,7 @@ export default defineComponent({
       this.confirmDelete = true
     },
     confirm(id: number): void {
-      console.log(id)
+      this.$store.dispatch('deleteContact', id)
     },
     close (): void {
       this.confirmDelete = false
