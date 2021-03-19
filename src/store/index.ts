@@ -19,6 +19,10 @@ export const store = createStore({
       state.contacts[index] = contact
       state.contacts = state.contacts.filter(c => c.id !== 0)
     },
+    DELETE_CONTACT (state, id: number) {
+      console.log(id)
+      state.contacts = state.contacts.filter(c => c.id !== id)
+    }
   },
   actions: {
     setContacts ({ commit }) {
@@ -37,6 +41,9 @@ export const store = createStore({
     updateContact ({ commit }, contact: Contact) {
       commit('UPDATE_CONTACT', contact)
     },
+    deleteContact ({ commit }, id: number) {
+      commit('DELETE_CONTACT', id)
+    }
   },
   modules: {
   },
