@@ -19,7 +19,7 @@ export default defineComponent({
   computed: {
     contacts (): Contact[] {
       // return  this.$store.state.contacts;
-      return new Array<Contact>()
+      return []
     }
   }
 })
