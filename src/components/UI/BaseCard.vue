@@ -13,4 +13,17 @@
   max-width: 40rem;
   background-color: white;
 }
+
+@media only screen and (max-width: 700px) {
+  .base-card {
+    max-width: 80%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .base-card {
+    max-width: 22rem;
+    min-width: 22rem;
+  }
+}
 </style>
