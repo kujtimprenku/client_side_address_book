@@ -1,4 +1,6 @@
-# client_side_address_book
+# Address Book App
+
+Simple client-side only app in `Vue` + `TS`.
 
 ## Project setup
 ```
